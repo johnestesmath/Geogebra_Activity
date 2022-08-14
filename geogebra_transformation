@@ -1,0 +1,298 @@
+\documentclass[10pt]{article}
+
+%-----------------------------------------------------------------
+% Style Info
+%-----------------------------------------------------------------
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Lachaise Assignment
+% Structure Specification File
+% Version 1.0 (26/6/2018)
+%
+% This template originates from:
+% http://www.LaTeXTemplates.com
+%
+% Authors:
+% Marion Lachaise & François Févotte
+% Vel (vel@LaTeXTemplates.com)
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\usepackage{amsmath,amsfonts,stmaryrd,amssymb, pifont} % Math packages
+\newcommand{\noi}{\noindent}
+\newcommand{\subs}{\subsection{}}
+\newcommand{\subsub}{\subsubsection{}}
+\newcommand{\tc}{\textcolor}
+\newcommand{\chk}{\checkmark}
+\newcommand{\x}{\ding{55}}
+
+\usepackage[dvipsnames]{xcolor}
+\usepackage{enumerate} % Custom item numbers for enumerations
+\usepackage{tikz}
+\usepackage[ruled]{algorithm2e} % Algorithms
+
+\usepackage[framemethod=tikz]{mdframed} % Allows defining custom boxed/framed environments
+
+\usepackage{graphicx} % For images
+\usepackage{float}
+
+\usepackage{listings} % File listings, with syntax highlighting
+\lstset{
+	basicstyle=\ttfamily, % Typeset listings in monospace font
+}
+
+\usepackage{titlesec} %formats sections
+
+\titleformat{\section}
+  {\normalfont\LARGE\bfseries}{\thesection}{1em}{}[{\titlerule[0.8pt]}]
+
+
+\titleformat{\subsection}[runin]{\normalfont\Large\bfseries}{\thesubsection}{1em}{}[{\titlerule[0.4pt]}]
+
+\titleformat{\subsubsection}[runin]{\normalfont\bfseries}{\thesubsubsection}{1em}{}[]
+
+%----------------------------------------------------------------------------------------
+%	DOCUMENT MARGINS
+%----------------------------------------------------------------------------------------
+
+\usepackage{geometry} % Required for adjusting page dimensions and margins
+
+\usepackage{lipsum}
+
+\makeatletter
+\renewcommand{\maketitle}{\bgroup\setlength{\parindent}{0pt}
+\begin{flushleft}
+  \textbf{\@title}
+		\@author \\
+\end{flushleft}\egroup
+}
+\makeatother
+
+\geometry{
+	paper=a4paper, % Paper size, change to letterpaper for US letter size
+	top=1.5cm, % Top margin
+	bottom=1cm, % Bottom margin
+	left=2cm, % Left margin
+	right=2cm, % Right margin
+	headheight=12pt, % Header height
+	footskip=1.5cm, % Space from the bottom margin to the baseline of the footer
+	headsep=.5cm, % Space from the top margin to the baseline of the header
+	%showframe, % Uncomment to show how the type block is set on the page
+}
+
+%----------------------------------------------------------------------------------------
+%	FONTS
+%----------------------------------------------------------------------------------------
+
+\usepackage[utf8]{inputenc} % Required for inputting international characters
+\usepackage[T1]{fontenc} % Output font encoding for international characters
+
+\usepackage{XCharter} % Use the XCharter fonts
+
+
+%-------------------------------------------------------------------
+%	ASSIGNMENT INFORMATION
+%-------------------------------------------------------------------
+
+\title{MAT 311: Geogebra Transformation Lab} % Title of the assignment
+
+\author{Name: \hspace{2in} Date:} % Author name and email address
+
+\date{} 
+
+%-------------------------------------------------------------------
+
+\begin{document}
+
+\maketitle % Print the title
+
+\vspace{.1in}
+ 
+\section{Part I. Getting Set Up} 
+ 
+ \noi In this lab, we will use Geogebra, a fantastic tool for visualizing and animating mathematical concepts, to explore applications of linear transformations in the plane. Before getting started, visit geogebra.org and either download Geogebra Classic 6 (found under App Downloads) or use the web applet. Downloading the app is recommended, and in either case, be sure to set up a free Geogebra account.
+
+% Talking about Linear Transformations ------------------------------------------------- 
+\subsection{Linear Transformations and the Standard Matrix} \hfill \\
+ 
+\noi Recall that the linear transformation that maps vector $\left[\begin{array}{c}
+x\\
+y
+\end{array}\right]$ to vector $\left[\begin{array}{c}
+ax + by\\
+cx + dy
+\end{array}\right]$ can be characterized by its standard matrix $A = \left[\begin{array}{cc}
+a & b\\
+c & d
+\end{array}\right]$ as seen by the following calculation.
+
+\[\left[\begin{array}{cc}
+a & b\\
+c & d
+\end{array}\right] \hspace{1em} \left[\begin{array}{c}
+x\\
+y
+\end{array}\right] = \left[\begin{array}{c}
+ax + by\\
+cx + dy
+\end{array}\right]\]
+
+\noi The linear transformation $T: \mathbb{R}^2 \rightarrow \mathbb{R}^2$ with standard matrix $A$ can be visualized geometrically by the way it transforms an object. This is what we want to do in this lab.
+
+% Initial Geogebra Setup ------------------------------------------------- 
+\subsection{Geogebra Setup} \hfill \\
+
+\noi \textbf{1. Drawing our Polygon} Once you have Geogebra opened, place five to ten points into the plane with each point within the rectangle $[-5,5] \times [-5,5]$. You can do this by simply selecting ``point" from the ``Tools" menu and clicking where in the plane you want those points.\\
+
+\noi In the Algebra menu, notice that each of these points has a name and a coordinate. If we use the ``Move" tool, we can drag a point in the plane, and its coordinate value updates dynamically. \\
+
+\noi Now select ``Polygon" from the ``Polygons" menu, and connect your dots to form a polygon in the plane. This is the shape we will manipulate. Draw your polygon in the space below. (You may hide the labels and change colors within the Settings menu if you would like.)
+
+\begin{center}
+\includegraphics[width=4in]{Homework/Geogebra Labs/geogebragrid.PNG}    
+\end{center}
+\newpage
+
+\noi \textbf{2. Defining our Matrix} In the Algebra menu, type ``matrix = $\{ \{ 1, 0 \}, \{ 0, 1 \} \}$". The output should be $I_2$, the $2 \times 2$ identity matrix.\\
+
+\noi \textbf{3. Adding our Vectors} Now that we our polygon and a matrix, find the ``Vectors" tool under the ``Lines" menu, and add vectors that start at the origin and end at each point of our polygon. Check to see in the Algebra menu that each vector is of the form Vector(G, A), meaning that each vector is defined by two points.\\
+
+\noi \textbf{4. Matrix Multiplication} In the Algebra menu, multiply each vector Vector(G, A) by our matrix. We do this by placing our cursor before ``Vector" and typing ``(matrix Vector(G,A))" Do this for each vector.\\
+
+\begin{center}
+\includegraphics[width=2in]{Homework/Geogebra Labs/geogebratransforms1.PNG}    
+\end{center}
+
+\noi By multiplying each vector by the identity matrix, we have performed a transformation that does not move anything. We will change ``matrix" in the next section to perform different transformations on our polygon.\\
+
+\noi \textbf{5. Drawing our New Polygon} For our visual to work correctly, we must hide our polygon and draw a new one. To do so, complete the following.\\
+
+\begin{enumerate}[{a.}]
+    \item In the Algebra menu, click the colored circle on the left margin beside each point and the polygon to hide those objects. You should only see your vectors.
+    \item Add new points at the end of each vector. Check in the Algebra menu that each point is defined by the vector like in the picture below.
+    \begin{center}
+    \includegraphics[width=2in]{Homework/Geogebra Labs/geogebratransforms2.PNG}    
+    \end{center}
+    \item Draw a polygon connecting your new points. It should look identical to your original, hidden polygon.
+    \item Lastly, hide your vectors and unhide your original polygon. 
+\end{enumerate}
+
+\noi We are now ready to perform some transformations!
+
+\newpage
+\section{Part II. Transformations} 
+% Different Matrices ------------------------------------------------- 
+\subsection{Testing Different Matrices} \hfill \\
+
+\noi Now that we have our Geogebra configuration correct, all we need to do is to change our matrix to perform a transformation. Redefine your matrix with the following matrices. Then draw your result and describe what transformation that matrix applied.\\
+
+\noi \textbf{6. } $\left[\begin{array}{cc}
+-1 & 0\\
+0 & 1
+\end{array}\right]$
+
+\begin{center}
+\includegraphics[width=4in]{Homework/Geogebra Labs/geogebragrid.PNG}    
+\end{center}
+
+\noi What type of transformation is this?  \rule{5cm}{0.15mm} \\
+
+\noi \textbf{7. } $\left[\begin{array}{cc}
+1 & 0\\
+0 & -1
+\end{array}\right]$
+
+\begin{center}
+\includegraphics[width=4in]{Homework/Geogebra Labs/geogebragrid.PNG}    
+\end{center}
+
+\noi What type of transformation is this?  \rule{5cm}{0.15mm} \\
+
+\noi \textbf{8. } $\left[\begin{array}{cc}
+2 & 0\\
+0 & 2
+\end{array}\right]$
+
+\begin{center}
+\includegraphics[width=4in]{Homework/Geogebra Labs/geogebragrid.PNG}    
+\end{center}
+
+\noi What type of transformation is this?  \rule{5cm}{0.15mm} \\
+
+\noi \textbf{9. } $\left[\begin{array}{cc}
+2 & 0\\
+0 & 1
+\end{array}\right]$
+
+\begin{center}
+\includegraphics[width=4in]{Homework/Geogebra Labs/geogebragrid.PNG}    
+\end{center}
+
+\noi What type of transformation is this?  \rule{5cm}{0.15mm} \\
+
+\newpage
+
+\noi \textbf{10. } $\left[\begin{array}{cc}
+0 & 1\\
+1 & 0
+\end{array}\right]$
+
+\begin{center}
+\includegraphics[width=4in]{Homework/Geogebra Labs/geogebragrid.PNG}    
+\end{center}
+
+\noi What type of transformation is this?  \rule{5cm}{0.15mm} \\
+
+\noi \textbf{11. } $\left[\begin{array}{cc}
+1 & 3\\
+0 & 1
+\end{array}\right]$
+
+\begin{center}
+\includegraphics[width=4in]{Homework/Geogebra Labs/geogebragrid.PNG}    
+\end{center}
+
+\noi What type of transformation is this?  \rule{5cm}{0.15mm} \\
+
+\newpage 
+
+\section{Part III. Rotations by $\theta$} 
+% Rotating ------------------------------------------------- 
+\subsection{Rotating our Polygon} \hfill \\
+
+\noi Now we will animate a rotation of our object. \\
+
+\noi \textbf{12.} Select ``slider" from the Basic Tools menu and add it to the plane. A menu should pop up. Take note of the slider name, and set the Min to be -2pi and the Max to be 2pi. For our example, the slider name is ``p".\\
+
+\begin{center}
+\includegraphics[width=2in]{Homework/Geogebra Labs/geogebratransforms3.PNG}   
+\end{center}
+
+\noi \textbf{13.} Now redefine matrix as $\left[\begin{array}{cc}
+\cos(p) & \sin(p)\\
+-\sin(p) & \cos(p)
+\end{array}\right]$. Be sure the inserted angle is the name of your slider.\\
+
+\noi What is happening to your polygon as you toggle your slider? \rule{5cm}{0.15mm} \\
+
+
+\noi \textbf{14.} Under the Settings menu, select ``Share". Copy the link to your Geogebra activity and post it in Canvas. Write the link URL here as well.\\
+
+\rule{15cm}{0.15mm}
+
+
+
+
+
+
+
+
+
+
+\end{document}
